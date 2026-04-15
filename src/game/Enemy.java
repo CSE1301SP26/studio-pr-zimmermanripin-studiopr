@@ -38,7 +38,9 @@ public class Enemy extends Entity {
 
     public boolean isFiring() {
         long now = System.currentTimeMillis();
-        if(now - lastFired > 1000) {
+        double w = now - this.lastFired;
+        // 1000 is for 1000 ms or 1 second
+        if(w > 1000) {
             lastFired = now;
             return true;
         } else {

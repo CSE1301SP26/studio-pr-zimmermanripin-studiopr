@@ -25,15 +25,11 @@ public class Player extends Entity {
 
     public boolean isFiring() {
         long now = System.currentTimeMillis();
-        if (now - lastFired > 500) {
-            if (StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
+        if (now - lastFired > 500 && StdDraw.isKeyPressed(KeyEvent.VK_SPACE)) {
                 lastFired = now;
                 return true;
             } else {
                 return false;
             }
-        } else {
-            return false;
-        }
-    }
+}
 }

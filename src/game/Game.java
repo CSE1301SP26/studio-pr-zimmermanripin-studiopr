@@ -31,8 +31,10 @@ public class Game {
             initializeLevel();
             boolean gameOver = false;
             while(gameOver == false) {
-                updatePositions();
+                moveUp();
+                moveDown ();
                 fireProjectiles();
+                enemyMoves();
                 gameOver = checkCollisions();
                 if(enemies.size() == 0) {
                     numberOfEnemies++;
@@ -54,7 +56,7 @@ public class Game {
         }  
     }
 
-    private void updatePositions() {
+    private void moveDown() {
         for(int i = 0; i < enemyProjectiles.size(); i++) {
             Projectile p = enemyProjectiles.get(i);
             p.moveDown();
@@ -62,7 +64,8 @@ public class Game {
                 enemyProjectiles.remove(p);
             }
         }
-
+    }
+    private void moveUp() {
         for(int i = 0; i < playerProjectiles.size(); i++) {
             Projectile p = playerProjectiles.get(i);
             p.moveUp();
@@ -70,13 +73,15 @@ public class Game {
                 playerProjectiles.remove(p);
             }
         }
-
+    }
+    private void enemyMoves() {
         for(int i = 0; i < enemies.size(); i++) {
             Enemy e = enemies.get(i);
             e.move();
         }
 
         player.move();
+     
     }
 
     private void fireProjectiles() {
